@@ -1,5 +1,8 @@
 {
   "name": "Greeed",
   "version": "1.0.0",
-  "main": "greeed.js"
+  "main": "greeed.js",
+  "ignore": [
+    "README.md"
+  ]
 }
