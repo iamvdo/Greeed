@@ -5,6 +5,8 @@ Greeed is a minimalist, responsive JS-based grid layout. The goal is to display 
 
 No CSS layout can do that, even Flexbox! :(
 
+See it in action using [Heeere](https://github.com/iamvdo/Heeere), CSS3D Transforms and transitions [in my personal website](http://iamvdo.me)
+
 ## Usage
 
 You need to bind greeed, with 2 parameters:
