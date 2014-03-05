@@ -140,6 +140,9 @@
 
 				var column = document.createElement('li');
 					column.className = this.options.classColumn;
+					// add some CSS
+					column.style.styleFloat = column.style.cssFloat = 'left';
+					column.style.display = 'block';
 					column.style.width = Math.floor( greeedWidth / this.nbColumns ) + 'px';
 				var columnElement = document.createElement('ul');
 					columnElement.className = this.options.classColumnInner;
