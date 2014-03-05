@@ -1,7 +1,7 @@
 Greeed
 ======
 
-Greeed is a minimalist, responsive JS-based grid layout. The goal is to display items on columns (based on media-queries), where items are presented from top to bottom, regardless of the number of columns.
+Greeed is a minimalist (only 2.9K minified), responsive JS-based grid layout. The goal is to display items on columns (based on media-queries), where items are presented from top to bottom, regardless of the number of columns.
 
 No CSS layout can do that, even Flexbox! :(
 
