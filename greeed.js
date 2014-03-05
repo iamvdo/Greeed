@@ -51,8 +51,11 @@
 	Greeed.prototype = {
 
 		defaults: {
-			fakeItem: false,
-			fakeItemClass: 'Greeed-item--fake'
+			classColumn: 'Greeed-column',
+			classColumnInner: 'Greeed-column-inner',
+			classItem: 'Greeed-item',
+			classFakeItem: 'Greeed-item--fake',
+			fakeItem: true
 		},
 
 		init: function () {
@@ -136,21 +139,21 @@
 			for (var i = 0; i < this.columns.length; i++) {
 
 				var column = document.createElement('li');
-					column.className = 'Greeed-column';
-					column.style.styleFloat = column.style.cssFloat = 'left';
+					column.className = this.options.classColumn;
 					column.style.width = Math.floor( greeedWidth / this.nbColumns ) + 'px';
 				var columnElement = document.createElement('ul');
-					//column.style.width = 100 / this.nbColumns + '%';
+					columnElement.className = this.options.classColumnInner;
 
 
 				for (var j = 0; j < this.columns[i].length; j++) {
+					this.columns[i][j].classList.add(this.options.classItem);
 					columnElement.appendChild(this.columns[i][j]);
 				}
 
 				if( this.columns[i]._offsetHeight < maxHeightColumn && this.options.fakeItem){
 
 					var fake_elem = document.createElement('li');
-						fake_elem.className = this.options.fakeItemClass;
+						fake_elem.className = this.options.classFakeItem;
 						fake_elem.style.height = maxHeightColumn - this.columns[i]._offsetHeight + 'px';
 
 						columnElement.appendChild(fake_elem);
