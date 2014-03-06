@@ -29,7 +29,7 @@ greeed.bind('.Greeed', {
 * `classColumn`: the `class` added to each column created (`li` elements). Default `.Greeed-column`.
 * `classColumnInner`: the `class` added to each inner column created (`ul` elements). Default `.Greeed-column-inner`.
 * `classItem`: the `class` added to each elements of the Greeed (`li` elements). Default `.Greeed-item`.
-* `classFakeItem`: the `class` added to each fake elements created in order to make each columns the same height (see nex option). Default `.Greeed-item--fake`.
+* `classFakeItem`: the `class` added to each fake elements created in order to make each columns the same height (see next option). Default `.Greeed-item--fake`.
 * `fakeItem`: boolean making each columns the same height or not, by creating a fake item. Default `true`.
 * `afterInit`: a callback function called after first initialization
 * `afterLayout`: a callback function called after every new layout calculation (browser's window resize, new orientation, etc.)
