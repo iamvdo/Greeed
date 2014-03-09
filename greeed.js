@@ -85,7 +85,7 @@
 			window.removeEventListener('resize', this.startCheckMQ, false);
 		},
 
-		createColumns: function ( greeedWidth ) {
+		createColumns: function () {
 
 			// create an Array of columns
 			this.columns = new Array(this.nbColumns);
@@ -145,8 +145,7 @@
 					column.className = this.options.classColumn;
 					// add some CSS
 					column.style.styleFloat = column.style.cssFloat = 'left';
-					column.style.display = 'block';
-					column.style.width = Math.floor( greeedWidth / this.nbColumns ) + 'px';
+					column.style.width = (100 / this.nbColumns ) + '%';
 				var columnElement = document.createElement(this.options.elementColumnInner);
 					columnElement.className = this.options.classColumnInner;
 
@@ -183,21 +182,6 @@
 
 		},
 
-		setColumnsWidth: function ( greeedWidth ) {
-
-			// update width to match parent width
-			var newColumnWidth = Math.floor( greeedWidth / this.nbColumns );
-			var greeedWidthCalc = newColumnWidth * this.nbColumns;
-			var pixelsLeft = greeedWidth - greeedWidthCalc;
-
-			for (var i = 0; i < this.columnsDOM.length; i++) {
-				var colWidth = (pixelsLeft > 0) ? newColumnWidth + 1 : newColumnWidth;
-				pixelsLeft--;
-				this.columnsDOM[i].style.width = colWidth + 'px';
-			}
-
-		},
-
 		checkMQ: function (event) {
 
 			var lastNbColumns = this.nbColumns;
@@ -219,14 +203,8 @@
 
 			}
 
-			// Get the width of the greeed, every time
-			var greeedWidth = Math.floor(getComputedStyle(this.grid).getPropertyValue('width').replace('px',''));
-
 			// create columns
-			this.createColumns( greeedWidth );
-
-			// set columns width, every time
-			this.setColumnsWidth( greeedWidth );
+			this.createColumns();
 
 		}
 	};
