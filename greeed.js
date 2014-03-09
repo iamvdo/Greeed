@@ -51,9 +51,12 @@
 	Greeed.prototype = {
 
 		defaults: {
+      elementColumn: 'li',
 			classColumn: 'Greeed-column',
+      elementColumnInner: 'ul',
 			classColumnInner: 'Greeed-column-inner',
-			classItem: 'Greeed-item',
+      classItem: 'Greeed-item',
+      elementFakeItem: 'li',
 			classFakeItem: 'Greeed-item--fake',
 			fakeItem: true
 		},
@@ -138,13 +141,13 @@
 
 			for (var i = 0; i < this.columns.length; i++) {
 
-				var column = document.createElement('li');
+				var column = document.createElement(this.options.elementColumn);
 					column.className = this.options.classColumn;
 					// add some CSS
 					column.style.styleFloat = column.style.cssFloat = 'left';
 					column.style.display = 'block';
 					column.style.width = Math.floor( greeedWidth / this.nbColumns ) + 'px';
-				var columnElement = document.createElement('ul');
+				var columnElement = document.createElement(this.options.elementColumnInner);
 					columnElement.className = this.options.classColumnInner;
 
 
@@ -155,7 +158,7 @@
 
 				if( this.columns[i]._offsetHeight < maxHeightColumn && this.options.fakeItem){
 
-					var fake_elem = document.createElement('li');
+					var fake_elem = document.createElement(this.options.elementFakeItem);
 						fake_elem.className = this.options.classFakeItem;
 						fake_elem.style.height = maxHeightColumn - this.columns[i]._offsetHeight + 'px';
 
