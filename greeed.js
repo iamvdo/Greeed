@@ -51,12 +51,12 @@
 	Greeed.prototype = {
 
 		defaults: {
-      elementColumn: 'li',
+			elementColumn: 'li',
 			classColumn: 'Greeed-column',
-      elementColumnInner: 'ul',
+			elementColumnInner: 'ul',
 			classColumnInner: 'Greeed-column-inner',
-      classItem: 'Greeed-item',
-      elementFakeItem: 'li',
+			classItem: 'Greeed-item',
+			elementFakeItem: 'li',
 			classFakeItem: 'Greeed-item--fake',
 			fakeItem: true
 		},
