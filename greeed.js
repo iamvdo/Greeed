@@ -51,11 +51,15 @@
 	Greeed.prototype = {
 
 		defaults: {
+			elementColumn: 'li',
 			classColumn: 'Greeed-column',
+			elementColumnInner: 'ul',
 			classColumnInner: 'Greeed-column-inner',
 			classItem: 'Greeed-item',
+			elementFakeItem: 'li',
 			classFakeItem: 'Greeed-item--fake',
-			fakeItem: true
+			fakeItem: true,
+			inlineStyles: true
 		},
 
 		init: function () {
@@ -82,7 +86,7 @@
 			window.removeEventListener('resize', this.startCheckMQ, false);
 		},
 
-		createColumns: function ( greeedWidth ) {
+		createColumns: function () {
 
 			// create an Array of columns
 			this.columns = new Array(this.nbColumns);
@@ -138,14 +142,17 @@
 
 			for (var i = 0; i < this.columns.length; i++) {
 
-				var column = document.createElement('li');
+				var column = document.createElement(this.options.elementColumn);
 					column.className = this.options.classColumn;
-					// add some CSS
-					column.style.styleFloat = column.style.cssFloat = 'left';
-					column.style.display = 'block';
-					column.style.width = Math.floor( greeedWidth / this.nbColumns ) + 'px';
-				var columnElement = document.createElement('ul');
-					columnElement.className = this.options.classColumnInner;
+					if (this.options.inlineStyles) {
+						column.style.display = 'table-cell';
+						column.style.verticalAlign = 'top';
+					}
+
+				if (this.options.elementColumnInner) {
+					var columnElement = document.createElement(this.options.elementColumnInner);
+						columnElement.className = this.options.classColumnInner;
+				} else var columnElement = column;
 
 
 				for (var j = 0; j < this.columns[i].length; j++) {
@@ -155,14 +162,14 @@
 
 				if( this.columns[i]._offsetHeight < maxHeightColumn && this.options.fakeItem){
 
-					var fake_elem = document.createElement('li');
+					var fake_elem = document.createElement(this.options.elementFakeItem);
 						fake_elem.className = this.options.classFakeItem;
 						fake_elem.style.height = maxHeightColumn - this.columns[i]._offsetHeight + 'px';
 
 						columnElement.appendChild(fake_elem);
 				}
 
-				column.appendChild(columnElement);
+				if (this.options.elementColumnInner) column.appendChild(columnElement);
 
 				// add the column to the DOM columns array
 				this.columnsDOM[i] = column;
@@ -174,23 +181,14 @@
 			this.grid.innerHTML = '';
 			this.grid.appendChild(grid);
 
-			if( this.options.afterLayout ){
-				this.options.afterLayout();
+			if (this.options.inlineStyles) {
+				this.grid.style.display = 'table';
+				this.grid.style.tableLayout = 'fixed';
+				this.grid.style.width = '100%';
 			}
 
-		},
-
-		setColumnsWidth: function ( greeedWidth ) {
-
-			// update width to match parent width
-			var newColumnWidth = Math.floor( greeedWidth / this.nbColumns );
-			var greeedWidthCalc = newColumnWidth * this.nbColumns;
-			var pixelsLeft = greeedWidth - greeedWidthCalc;
-
-			for (var i = 0; i < this.columnsDOM.length; i++) {
-				var colWidth = (pixelsLeft > 0) ? newColumnWidth + 1 : newColumnWidth;
-				pixelsLeft--;
-				this.columnsDOM[i].style.width = colWidth + 'px';
+			if( this.options.afterLayout ){
+				this.options.afterLayout();
 			}
 
 		},
@@ -216,14 +214,8 @@
 
 			}
 
-			// Get the width of the greeed, every time
-			var greeedWidth = Math.floor(getComputedStyle(this.grid).getPropertyValue('width').replace('px',''));
-
 			// create columns
-			this.createColumns( greeedWidth );
-
-			// set columns width, every time
-			this.setColumnsWidth( greeedWidth );
+			this.createColumns();
 
 		}
 	};
