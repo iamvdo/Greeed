@@ -148,8 +148,11 @@
 						column.style.display = 'table-cell';
 						column.style.verticalAlign = 'top';
 					}
-				var columnElement = document.createElement(this.options.elementColumnInner);
-					columnElement.className = this.options.classColumnInner;
+
+				if (this.options.elementColumnInner) {
+					var columnElement = document.createElement(this.options.elementColumnInner);
+						columnElement.className = this.options.classColumnInner;
+				} else var columnElement = column;
 
 
 				for (var j = 0; j < this.columns[i].length; j++) {
@@ -166,7 +169,7 @@
 						columnElement.appendChild(fake_elem);
 				}
 
-				column.appendChild(columnElement);
+				if (this.options.elementColumnInner) column.appendChild(columnElement);
 
 				// add the column to the DOM columns array
 				this.columnsDOM[i] = column;
