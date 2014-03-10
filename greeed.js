@@ -184,7 +184,7 @@
 			if (this.options.inlineStyles) {
 				this.grid.style.display = 'table';
 				this.grid.style.tableLayout = 'fixed';
-				this.grid.style.width = '100%';
+				this.grid.style.width = '98%';
 			}
 
 			if( this.options.afterLayout ){

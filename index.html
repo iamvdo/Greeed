@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Greeed Demo</title>
+	<style>
+	* {
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+				box-sizing: border-box;
+	}
+	html {
+		font: 1em sans-serif;
+	}
+	.Greeed {
+		padding: 0;
+		width: 95%;
+		margin: auto;
+		overflow: hidden;
+	}
+	.Greeed-item {
+		height: 10em;
+		padding: 1em;
+		display: block;
+		background: deepskyblue;
+		/* border: 1px solid rgba(0,0,0,.3); */
+	}
+	.Greeed-item {
+		opacity: 1;
+		transform-origin: 50% 0;
+		transform: perspective(500px) rotateX(0) translateY(0) translateZ(0);
+		transition: transform .3s, opacity .3s;
+		-webkit-transform-origin: 50% 0;
+		-webkit-transform: perspective(500px) rotateX(0) translateY(0) translateZ(0);
+		transition: -webkit-transform .3s, opacity .3s;
+		transition: transform .3s, opacity .3s;
+	}
+	.Greeed-item.seen {
+		transform-origin: 50% 100%;
+		-webkit-transform-origin: 50% 100%;
+	}
+	.Greeed-item.past {
+		opacity: 0;
+		transform-origin: 50% 100%;
+		transform: perspective(500px) rotateX(90deg) translateY(-10em) translateZ(0);
+		-webkit-transform-origin: 50% 100%;
+		-webkit-transform: perspective(500px) rotateX(90deg) translateY(-10em) translateZ(0);
+	}
+	.Greeed-item.future {
+		opacity: 0;
+		transform: perspective(500px) rotateX(-90deg) translateY(10em) translateZ(0);
+		-webkit-transform: perspective(500px) rotateX(-90deg) translateY(10em) translateZ(0);
+	}
+	.Greeed-column:nth-child(1) .Greeed-item:nth-child(3),
+	.Greeed-column:nth-child(1) .Greeed-item:nth-child(5),
+	.Greeed-column:nth-child(1) .Greeed-item:nth-child(7),
+	.Greeed-column:nth-child(2) .Greeed-item:nth-child(1),
+	.Greeed-column:nth-child(2) .Greeed-item:nth-child(3),
+	.Greeed-column:nth-child(2) .Greeed-item:nth-child(7),
+	.Greeed-column:nth-child(3) .Greeed-item:nth-child(2),
+	.Greeed-column:nth-child(3) .Greeed-item:nth-child(4),
+	.Greeed-column:nth-child(3) .Greeed-item:nth-child(8),
+	.Greeed-column:nth-child(4) .Greeed-item:nth-child(3),
+	.Greeed-column:nth-child(4) .Greeed-item:nth-child(5),
+	.Greeed-column:nth-child(4) .Greeed-item:nth-child(7) {
+		height: 20em;
+	}
+	.Greeed-column-inner {
+		padding: 0;
+	}
+	</style>
+</head>
+<body>
+	<ul class="Greeed">
+		<li class="Greeed-item">item1</li>
+		<li class="Greeed-item">item2</li>
+		<li class="Greeed-item">item3</li>
+		<li class="Greeed-item">item4</li>
+		<li class="Greeed-item">item5</li>
+		<li class="Greeed-item">item6</li>
+		<li class="Greeed-item">item7</li>
+		<li class="Greeed-item">item8</li>
+		<li class="Greeed-item">item9</li>
+		<li class="Greeed-item">item10</li>
+		<li class="Greeed-item">item11</li>
+		<li class="Greeed-item">item12</li>
+		<li class="Greeed-item">item13</li>
+		<li class="Greeed-item">item14</li>
+		<li class="Greeed-item">item15</li>
+		<li class="Greeed-item">item16</li>
+		<li class="Greeed-item">item17</li>
+		<li class="Greeed-item">item18</li>
+		<li class="Greeed-item">item19</li>
+		<li class="Greeed-item">item20</li>
+		<li class="Greeed-item">item21</li>
+		<li class="Greeed-item">item22</li>
+		<li class="Greeed-item">item23</li>
+		<li class="Greeed-item">item24</li>
+		<li class="Greeed-item">item25</li>
+		<li class="Greeed-item">item26</li>
+		<li class="Greeed-item">item27</li>
+		<li class="Greeed-item">item28</li>
+		<li class="Greeed-item">item29</li>
+		<li class="Greeed-item">item30</li>
+		<li class="Greeed-item">item31</li>
+		<li class="Greeed-item">item32</li>
+		<li class="Greeed-item">item33</li>
+		<li class="Greeed-item">item34</li>
+		<li class="Greeed-item">item35</li>
+	</ul>
+	<script src="greeed.js"></script>
+	<script src="heeere.js"></script>
+	<script>
+	var opts = {
+		breakpoints: [34,48,65,88,110,140],
+		afterLayout: function () {
+			heeere.bind({elems: '.Greeed-item'});
+		}
+	};
+	greeed.bind('.Greeed', opts);
+	</script>
+</body>
+</html>
