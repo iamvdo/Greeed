@@ -26,10 +26,13 @@ greeed.bind('.Greeed', {
 ## Options:
 
 * `breakpoints` (required): an array with all breakpoints. Each breakpoints must be in `em` unit and represent how many columns you want between 2 breakpoints. In the example above, there will be 1 column from 0 to 34em, then 2 columns from 34em to 48em, and so on...
-* `classColumn`: the `class` added to each column created (`li` elements). Default `.Greeed-column`.
+* `elementColumn`: the DOM element type for each column created. Default `li`.
+* `elementColumnInner`: the DOM element type for each inner column created. Default `ul`. Set to `false` if you don't want inner elements. Useful for nested lists.
+* `classColumn`: the `class` added to each column created. Default `.Greeed-column`.
 * `classColumnInner`: the `class` added to each inner column created (`ul` elements). Default `.Greeed-column-inner`.
 * `classItem`: the `class` added to each elements of the Greeed (`li` elements). Default `.Greeed-item`.
-* `classFakeItem`: the `class` added to each fake elements created in order to make each columns the same height (see next option). Default `.Greeed-item--fake`.
-* `fakeItem`: boolean making each columns the same height or not, by creating a fake item. Default `true`.
+* `classFakeItem`: the `class` added to each fake elements created. Fake elements make each columns the same height. Default `.Greeed-item--fake`. Set to `false` if you don't want fake items.
+* `layout`: set the CSS layout you want to use. Table layout (`table`) or float (`float`). Default `table`.
+* `units`: set units for `float` layout. Percentages (`fluid`) or pixels (`fixed`). Default `fluid`.
 * `afterInit`: a callback function called after first initialization
 * `afterLayout`: a callback function called after every new layout calculation (browser's window resize, new orientation, etc.)
