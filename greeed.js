@@ -52,6 +52,7 @@
 
 		defaults: {
 			units: 'fluid',
+			layout: 'table',
 			elementColumn: 'li',
 			classColumn: 'Greeed-column',
 			elementColumnInner: 'ul',
@@ -145,13 +146,19 @@
 				var column = document.createElement(this.options.elementColumn);
 					column.className = this.options.classColumn;
 					if (this.options.inlineStyles) {
-						column.style.styleFloat = column.style.cssFloat = 'left';
-						column.style.display = 'block';
-						if (this.options.units === 'fixed') {
-							column.style.width = Math.floor( greeedWidth / this.nbColumns ) + 'px';
+						if (this.options.layout === 'table') {
+							column.style.display = 'table-cell';
+							column.style.verticalAlign = 'top';
 						} else {
-							column.style.width = (100 / this.nbColumns ) + '%';
+							column.style.styleFloat = column.style.cssFloat = 'left';
+							column.style.display = 'block';
+							if (this.options.units === 'fixed') {
+								column.style.width = Math.floor( greeedWidth / this.nbColumns ) + 'px';
+							} else {
+								column.style.width = (100 / this.nbColumns ) + '%';
+							}
 						}
+
 					}
 
 				if (this.options.elementColumnInner) {
@@ -189,6 +196,11 @@
 
 			this.grid.innerHTML = '';
 			this.grid.appendChild(grid);
+
+			if (this.options.layout === 'table') {
+				this.grid.style.display = 'table';
+				this.grid.style.tableLayout = 'fixed';
+			}
 
 			if( this.options.afterLayout ){
 				this.options.afterLayout();
