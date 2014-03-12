@@ -1,5 +1,5 @@
 /*!
- * Greeed.js 1.0.0
+ * Greeed.js 1.1.0
  * MIT licensed
  *
  * Copyright (C) 2014 Vincent De Oliveira, http://iamvdo.me
@@ -51,16 +51,14 @@
 	Greeed.prototype = {
 
 		defaults: {
-			units: 'fluid',
-			layout: 'table',
 			elementColumn: 'li',
-			classColumn: 'Greeed-column',
 			elementColumnInner: 'ul',
+			classColumn: 'Greeed-column',
 			classColumnInner: 'Greeed-column-inner',
 			classItem: 'Greeed-item',
 			classFakeItem: 'Greeed-item--fake',
-			fakeItem: true,
-			inlineStyles: true
+			layout: 'table',
+			units: 'fluid'
 		},
 
 		init: function () {
@@ -145,21 +143,20 @@
 
 				var column = document.createElement(this.options.elementColumn);
 					column.className = this.options.classColumn;
-					if (this.options.inlineStyles) {
-						if (this.options.layout === 'table') {
-							column.style.display = 'table-cell';
-							column.style.verticalAlign = 'top';
-						} else {
-							column.style.styleFloat = column.style.cssFloat = 'left';
-							column.style.display = 'block';
-							if (this.options.units === 'fixed') {
-								column.style.width = Math.floor( greeedWidth / this.nbColumns ) + 'px';
-							} else {
-								column.style.width = (100 / this.nbColumns ) + '%';
-							}
-						}
 
+					if (this.options.layout === 'table') {
+						column.style.display = 'table-cell';
+						column.style.verticalAlign = 'top';
+					} else {
+						column.style.styleFloat = column.style.cssFloat = 'left';
+						column.style.display = 'block';
+						if (this.options.units === 'fixed') {
+							column.style.width = Math.floor( greeedWidth / this.nbColumns ) + 'px';
+						} else {
+							column.style.width = (100 / this.nbColumns ) + '%';
+						}
 					}
+
 
 				if (this.options.elementColumnInner) {
 					var columnElement = document.createElement(this.options.elementColumnInner);
@@ -174,7 +171,7 @@
 					columnElement.appendChild(this.columns[i][j]);
 				}
 
-				if( this.columns[i]._offsetHeight < maxHeightColumn && this.options.fakeItem){
+				if( this.columns[i]._offsetHeight < maxHeightColumn && this.options.classFakeItem){
 
 					var fake_elem = document.createElement(this.options.elementColumn);
 						fake_elem.className = this.options.classItem + ' ' + this.options.classFakeItem;
