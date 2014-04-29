@@ -167,7 +167,7 @@
 
 
 				for (var j = 0; j < this.columns[i].length; j++) {
-					this.columns[i][j].className += ' ' + this.options.classItem;
+					this.columns[i][j].classList.add(this.options.classItem);
 					columnElement.appendChild(this.columns[i][j]);
 				}
 
