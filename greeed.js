@@ -97,22 +97,13 @@
 
 			for (var i = 0; i < this.childs.length; i++) {
 
-				var smallestColumnHeight = 0;
-				var smallestColumnIndex = 0;
 				// find the smallest column to place the next child
+				var columnsHeight = [];
 				for (var j = 0; j < this.columns.length; j++) {
 					var columnHeight = this.columns[j]._offsetHeight;
-					if(j === 0){
-						smallestColumnHeight = columnHeight;
-					}
-					if(columnHeight === 0){
-						smallestColumnIndex = j;
-						break;
-					}
-					if(columnHeight < smallestColumnHeight){
-						smallestColumnIndex = j;
-					}
+					columnsHeight.push(columnHeight);
 				}
+				var smallestColumnIndex = columnsHeight.indexOf(Math.min.apply(Math, columnsHeight));
 
 				// add child to the smallest height column
 				this.columns[smallestColumnIndex].push(this.childs[i]);
