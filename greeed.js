@@ -1,5 +1,5 @@
 /*!
- * Greeed.js 1.1.2
+ * Greeed.js 1.1.3
  * MIT licensed
  *
  * Copyright (C) 2014 Vincent De Oliveira, http://iamvdo.me
